@@ -6,6 +6,7 @@ Prestashop API for Ruby
 
 Is extrected from service used for synchronization suppliers catalogue with Prestashop Cloud via API on client side available here https://syncmystore.com/en
 
+This is a work on progress to enable order_history creation
 
 ## Installation
 
