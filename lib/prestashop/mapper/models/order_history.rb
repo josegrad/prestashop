@@ -2,7 +2,7 @@ using Prestashop::Mapper::Refinement
 module Prestashop
   	module Mapper
     	class OrderHistory < Model
-      		resource :order_histories
+      		resource "order_histories?sendemail=1"
       		model :order_history
 
 			attr_accessor :id, :id_order_state, :id_order, :id_employee
