@@ -24,8 +24,9 @@ module Prestashop
       #   @connection.api_url = 'mystore.com' # => http://mystore.com/api/
       #
       def api_url= url
-        url.gsub!(/^(http|https):\/\//,'')
-        url = 'http://' + url
+        #THIS WAS FORCING REQUESTS OUT OF HTTPS!! KEEP WHATEVER THE URL INDICATES
+        #url.gsub!(/^(http|https):\/\//,'')
+        #url = 'http://' + url
         url << '/' unless url.end_with? '/'
         url << 'api/' unless url.end_with? 'api/'
         @api_url = url
@@ -35,7 +36,7 @@ module Prestashop
       # which can be usedo for API call
       #
       def connection
-        Faraday.new do |builder|
+          Faraday.new(:ssl => {:verify => false}) do |builder|
           builder.url_prefix = api_url
           builder.request     :multipart
           builder.request     :url_encoded
